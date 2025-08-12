@@ -1,0 +1,27 @@
+apiVersion: bat:wqch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: my-cron
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: my-cron
+    spec:
+      activeDeadlineSeconds: 15
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - command:
+            - bin/sh
+            - -c
+            - echo "Hello Rajagiri"
+            image: busybox
+            name: my-cron
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: "*/2 * * * *"
+status: {}`:wq!
