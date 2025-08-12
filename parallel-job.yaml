@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: parallel-job
+spec:
+  completions: 6
+  parallelism: 2
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - command:
+        - bin/sh
+        - -c
+        - echo "Data Processed"
+        - sleep 30
+        image: busybox
+        name: parallel-job
+        resources: {}
+      restartPolicy: Never
+status: {}
